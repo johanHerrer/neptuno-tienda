@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptuno</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>NEPTUNO</h1>
+
+        <p>Tecnología Apple y accesorios premium</p>
+
+    </header>
+
+    <div class="buscador">
+
+        <form method="GET">
+            <input type="text" name="q" placeholder="Buscar iPhone, cargador...">
+
+            <button type="submit">
+                Buscar
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="categorias">
+
+        <a href="/">Todos</a>
+
+        {% for categoria in categorias %}
+        <a href="?categoria={{ categoria.id }}">
+            {{ categoria.nombre }}
+        </a>
+        {% endfor %}
+
+    </div>
+
+    <h2 class="titulo">
+        Promociones
+    </h2>
+
+    <div class="productos">
+
+        {% for producto in promociones %}
+
+        <div class="card promo">
+
+            <img src="{{ producto.imagen.url }}">
+
+            <h2>{{ producto.nombre }}</h2>
+
+            <h3>$ {{ producto.precio_con_descuento }}</h3>
+
+            <a href="https://wa.me/573507938548?text=Hola quiero comprar {{ producto.nombre }}" target="_blank"
+                class="btn">
+                Comprar
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <section class="productos">
+
+        {% for producto in productos %}
+        <div class="card">
+
+            <img src="{{ producto.imagen.url }}">
+
+            <h2>{{ producto.nombre }}</h2>
+
+            <p>{{ producto.descripcion }}</p>
+
+            {% if producto.descuento > 0 %}
+            <span class="precio-old">
+                $ {{ producto.precio }}
+            </span>
+
+            <span class="descuento">
+                {{ producto.descuento }}% OFF
+            </span>
+
+            <h3 class="precio">
+                $ {{ producto.precio_con_descuento }}
+            </h3>
+
+            {% else %}
+
+            <h3 class="precio">
+                $ {{ producto.precio }}
+            </h3>
+
+            {% endif %}
+
+            <a href="https://wa.me/573507938548?text=Hola quiero comprar {{ producto.nombre }}" target="_blank"
+                class="btn">
+                Comprar por WhatsApp
+            </a>
+
+        </div>
+        {% endfor %}
+
+    </section>
+
+    <a href="https://wa.me/573507938548" class="whatsapp" target="_blank">
+        💬
+    </a>
+
+</body>
+
+</html>

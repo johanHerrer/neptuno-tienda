@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard Neptuno</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+
+    <h1>Dashboard Neptuno</h1>
+
+    <div class="dashboard">
+
+        <div class="box">
+            <h2>{{ total_productos }}</h2>
+            <p>Productos</p>
+        </div>
+
+        <div class="box">
+            <h2>{{ total_categorias }}</h2>
+            <p>Categorías</p>
+        </div>
+
+        <div class="box">
+            <h2>{{ total_promociones }}</h2>
+            <p>Promociones</p>
+        </div>
+
+    </div>
+
+    <h2>Últimos productos</h2>
+
+    <ul>
+        {% for p in productos %}
+        <li>{{ p.nombre }} - ${{ p.precio }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>
